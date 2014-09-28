@@ -1,0 +1,86 @@
+# Project: Raytracing
+# Makefile created by Dev-C++ 5.6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = obj/Raytracing_private.res
+OBJ      = obj/main.o obj/float2.o obj/float3.o obj/float4.o obj/float4x4.o obj/Camera.o obj/resource.o obj/Model.o obj/Scene.o obj/Object.o obj/Material.o obj/Models.o obj/Materials.o obj/Renderer.o obj/Light.o obj/Ray.o obj/Clock.o obj/Texture.o obj/Textures.o $(RES)
+LINKOBJ  = obj/main.o obj/float2.o obj/float3.o obj/float4.o obj/float4x4.o obj/Camera.o obj/resource.o obj/Model.o obj/Scene.o obj/Object.o obj/Material.o obj/Models.o obj/Materials.o obj/Renderer.o obj/Light.o obj/Ray.o obj/Clock.o obj/Texture.o obj/Textures.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows lib/x64/libd3d9.a lib/x64/libd3dcompiler_43.a lib/x64/libd3dx9_43.a
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+BIN      = ../Raytracing.exe
+CXXFLAGS = $(CXXINCS) -O3 -std=gnu++11 -Wno-unused-parameter -Wno-missing-field-initializers
+CFLAGS   = $(INCS) -O3 -std=gnu++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+obj/main.o: main.cpp
+	$(CPP) -c main.cpp -o obj/main.o $(CXXFLAGS)
+
+obj/float2.o: float2.cpp
+	$(CPP) -c float2.cpp -o obj/float2.o $(CXXFLAGS)
+
+obj/float3.o: float3.cpp
+	$(CPP) -c float3.cpp -o obj/float3.o $(CXXFLAGS)
+
+obj/float4.o: float4.cpp
+	$(CPP) -c float4.cpp -o obj/float4.o $(CXXFLAGS)
+
+obj/float4x4.o: float4x4.cpp
+	$(CPP) -c float4x4.cpp -o obj/float4x4.o $(CXXFLAGS)
+
+obj/Camera.o: Camera.cpp
+	$(CPP) -c Camera.cpp -o obj/Camera.o $(CXXFLAGS)
+
+obj/resource.o: resource.cpp
+	$(CPP) -c resource.cpp -o obj/resource.o $(CXXFLAGS)
+
+obj/Model.o: Model.cpp
+	$(CPP) -c Model.cpp -o obj/Model.o $(CXXFLAGS)
+
+obj/Scene.o: Scene.cpp
+	$(CPP) -c Scene.cpp -o obj/Scene.o $(CXXFLAGS)
+
+obj/Object.o: Object.cpp
+	$(CPP) -c Object.cpp -o obj/Object.o $(CXXFLAGS)
+
+obj/Material.o: Material.cpp
+	$(CPP) -c Material.cpp -o obj/Material.o $(CXXFLAGS)
+
+obj/Models.o: Models.cpp
+	$(CPP) -c Models.cpp -o obj/Models.o $(CXXFLAGS)
+
+obj/Materials.o: Materials.cpp
+	$(CPP) -c Materials.cpp -o obj/Materials.o $(CXXFLAGS)
+
+obj/Renderer.o: Renderer.cpp
+	$(CPP) -c Renderer.cpp -o obj/Renderer.o $(CXXFLAGS)
+
+obj/Light.o: Light.cpp
+	$(CPP) -c Light.cpp -o obj/Light.o $(CXXFLAGS)
+
+obj/Ray.o: Ray.cpp
+	$(CPP) -c Ray.cpp -o obj/Ray.o $(CXXFLAGS)
+
+obj/Clock.o: Clock.cpp
+	$(CPP) -c Clock.cpp -o obj/Clock.o $(CXXFLAGS)
+
+obj/Texture.o: Texture.cpp
+	$(CPP) -c Texture.cpp -o obj/Texture.o $(CXXFLAGS)
+
+obj/Textures.o: Textures.cpp
+	$(CPP) -c Textures.cpp -o obj/Textures.o $(CXXFLAGS)
+
+obj/Raytracing_private.res: Raytracing_private.rc 
+	$(WINDRES) -i Raytracing_private.rc --input-format=rc -o obj/Raytracing_private.res -O coff 
